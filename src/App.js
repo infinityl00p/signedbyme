@@ -7,7 +7,7 @@ const data = {
     {
       id: 1,
       title: "No alcohol",
-      contract: "Stringidy Stringidy Stringidy",
+      contractString: "Stringidy Stringidy Stringidy",
       endDate: "05-19-2018",
       witness: {
         id: 1,
@@ -18,7 +18,7 @@ const data = {
     {
       id: 2,
       title: "No Fap",
-      contract: "Fap Fap Fap",
+      contractString: "Fap Fap Fap",
       endDate: "05-19-2018",
       witness: {
         id: 1,
@@ -29,7 +29,7 @@ const data = {
     {
       id: 3,
       title: "No alcohol",
-      contract: "Stringidy Stringidy Stringidy",
+      contractString: "Stringidy Stringidy Stringidy",
       endDate: "05-19-2018",
       witness: {
         id: 1,
@@ -40,7 +40,7 @@ const data = {
     {
       id: 4,
       title: "No alcohol",
-      contract: "Stringidy Stringidy Stringidy",
+      contractString: "Stringidy Stringidy Stringidy",
       endDate: "05-19-2018",
       witness: {
         id: 1,
@@ -59,6 +59,14 @@ class App extends Component {
       contracts: data.contracts
     }
   }
+
+  appendContract = (contractObject) => {
+    //TODO: server request, send off emails in server
+    //TODO: receive response with id and witness id
+    var joined = this.state.contracts.concat(contractObject);
+    this.setState({ contracts: joined })
+  }
+
   render() {
     return (
       <div className="app container">
@@ -71,7 +79,7 @@ class App extends Component {
 
         <div className="row">
           <div className="col-12 col-lg-6">
-            <ContractContainer />
+            <ContractContainer handleClick={this.appendContract} />
           </div>
           <div className="col-12 mx-auto my-auto col-md-4">
             <ContractList contracts={this.state.contracts} />

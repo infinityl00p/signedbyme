@@ -15,7 +15,8 @@ class ContractList extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      vertical: true
+      vertical: true,
+      centerMode: true
     };
 
     return(

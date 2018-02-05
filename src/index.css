@@ -31,7 +31,11 @@ body {
   color: #18b5fe;
 }
 
-.contract input.underline {
+.underline {
+  border-bottom: 1px solid #c9c9c9;
+}
+
+input.underline {
   border-bottom: 1px solid #c9c9c9;
 }
 
@@ -64,13 +68,23 @@ textarea, textarea:focus, input:focus{
   background-color: #3498db !important;
 }
 
+.contract-list {
+  margin: 0 auto;
+}
+
 .contract-list-item {
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
-  height: 200px;
-  width: 200px;
 }
 
 .contract-list-item:hover {
   cursor: pointer;
+}
+
+.contract-list-item .contract-title {
+  font-size: 20px !important;
+}
+
+.Tilt {
+  margin: 0 auto;
 }
