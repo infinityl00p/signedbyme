@@ -15,18 +15,20 @@ body {
 }
 
 .contract {
-  height: 80vh;
+  height: 100%;
   box-shadow: 0 0 10px black;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .contract input {
   border: none;
 }
 
-.contract input.contract-title {
-  color: #3498db;
+.light-blue {
+  color: #18b5fe;
 }
 
 .contract input.underline {
@@ -41,8 +43,6 @@ textarea, textarea:focus, input:focus{
 
 .notes {
   background-attachment: local;
-  padding-left: 20px;
-  padding-right: 20px;
   background-image:
       linear-gradient(to right, white 10px, transparent 10px),
       linear-gradient(to left, white 10px, transparent 10px),
@@ -51,11 +51,26 @@ textarea, textarea:focus, input:focus{
   padding: 5px 10px;
 }
 
-.contract-signature {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 .contract-signature .signature {
   font-family: 'Sacramento', cursive;
+}
+
+.btn-outline-primary {
+  color: #18b5fe !important;
+  border-color: #18b5fe !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3498db !important;
+}
+
+.contract-list-item {
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
+  height: 200px;
+  width: 200px;
+}
+
+.contract-list-item:hover {
+  cursor: pointer;
 }
