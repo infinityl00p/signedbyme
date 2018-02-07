@@ -5,10 +5,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import ContractListItem from './ContractListItem';
 
 class ContractList extends Component {
-  handleClick = (id) => {
-    //route to the page with the contract
-  }
-
   render() {
     const settings = {
       infinite: true,
@@ -33,7 +29,7 @@ class ContractList extends Component {
                     title={contract.title}
                     endDate={contract.endDate}
                     signature={contract.signature}
-                    handleClick={this.handleClick}
+                    handleClick={this.props.handleClick}
                   />
                 </div>
               )

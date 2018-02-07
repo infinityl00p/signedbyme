@@ -1,83 +1,19 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-
 import 'react-datepicker/dist/react-datepicker.css';
 
 class ContractContainer extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      endDate: moment(),
-      title: "",
-      name: "",
-      contractString: "",
-      signature: "",
-      witnessName: "",
-      witnessEmail: ""
-    }
-  }
-
   handleClick = (e) => {
     this.props.handleClick({
-      title: this.state.title,
-      name: this.state.name,
-      signature: this.state.signature,
-      contractString: this.state.contractString,
-      endDate: moment(this.state.endDate).format('YYYY-MM-DD'),
-      witnessName: this.state.witnessName,
-      witnessEmail: this.state.witnessEmail
+      title: this.props.activeContract.title,
+      name: this.props.activeContract.name,
+      signature: this.props.activeContract.signature,
+      contractString: this.props.activeContract.contractString,
+      endDate: moment(this.props.activeContract.endDate).format('YYYY-MM-DD'),
+      witnessName: this.props.activeContract.witnessName,
+      witnessEmail: this.props.activeContract.witnessEmail
     })
-  }
-
-  handleDateChange = (date) => {
-    this.setState({
-      endDate: date
-    })
-  }
-
-  handleInputChange = (value, inputType) => {
-    switch(inputType) {
-      case "title":
-        this.setState({
-          title: value
-        });
-        break;
-
-      case "name":
-        this.setState({
-          name: value
-        });
-        break;
-
-      case "contractString":
-        this.setState({
-          contractString: value
-        });
-        break;
-
-      case "signature":
-        this.setState({
-          signature: value
-        });
-        break;
-
-      case "witnessName":
-        this.setState({
-          witnessName: value
-        });
-        break;
-
-      case "witnessEmail":
-        this.setState({
-          witnessEmail: value
-        });
-        break;
-
-      default:
-        break;
-    }
   }
 
   render() {
@@ -90,8 +26,8 @@ class ContractContainer extends Component {
                 className="light-blue text-center w-100"
                 type="title"
                 placeholder="Challenge Title"
-                value={this.state.title}
-                onChange={(e) => { this.handleInputChange(e.target.value, "title")}}
+                value={this.props.activeContract.title}
+                onChange={(e) => { this.props.handleInputChange(e.target.value, "title")}}
               />
             </h2>
           </div>
@@ -102,8 +38,8 @@ class ContractContainer extends Component {
               className="text-center w-40 mx-2 underline"
               type="name"
               placeholder="Your Name"
-              value={this.state.name}
-              onChange={(e) => { this.handleInputChange(e.target.value, "name") }}
+              value={this.props.activeContract.name}
+              onChange={(e) => { this.props.handleInputChange(e.target.value, "name") }}
             />
             agree to:
           </div>
@@ -112,8 +48,8 @@ class ContractContainer extends Component {
             <textarea
               className="notes w-100"
               rows="6"
-              value={this.state.contractString}
-              onChange={(e) => { this.handleInputChange(e.target.value, "contractString") }}
+              value={this.props.activeContract.contractString}
+              onChange={(e) => { this.props.handleInputChange(e.target.value, "contractString") }}
             />
           </div>
 
@@ -123,8 +59,8 @@ class ContractContainer extends Component {
             </div>
             <div className="col-md-3 underline">
               <DatePicker
-                selected={this.state.endDate}
-                onChange={this.handleDateChange}
+                selected={this.props.activeContract.endDate}
+                onChange={this.props.handleDateChange}
               />
             </div>
           </div>
@@ -137,8 +73,8 @@ class ContractContainer extends Component {
                   className="text-center mx-2 underline sign"
                   type="name"
                   placeholder="Your Name"
-                  value={this.state.name}
-                  onChange={(e) => { this.handleInputChange(e.target.value, "name") }}
+                  value={this.props.activeContract.name}
+                  onChange={(e) => { this.props.handleInputChange(e.target.value, "name") }}
                 />
               </div>
               <div className="col-md-6 col-12">
@@ -146,7 +82,8 @@ class ContractContainer extends Component {
                   className="text-center mx-2 underline signature sign"
                   type="signature"
                   placeholder="Signature"
-                  onChange={(e) => { this.handleInputChange(e.target.value, "signature") }}
+                  value={this.props.activeContract.signature}
+                  onChange={(e) => { this.props.handleInputChange(e.target.value, "signature") }}
                 />
               </div>
             </div>
@@ -157,7 +94,8 @@ class ContractContainer extends Component {
                   className="text-center mx-2 underline sign"
                   type="witness-name"
                   placeholder="Witness Name"
-                  onChange={(e) => { this.handleInputChange(e.target.value, "witnessName") }}
+                  value={this.props.activeContract.witnessName}
+                  onChange={(e) => { this.props.handleInputChange(e.target.value, "witnessName") }}
                 />
               </div>
               <div className="col-md-6 col-12">
@@ -165,7 +103,8 @@ class ContractContainer extends Component {
                   className="text-center mx-2 underline sign"
                   type="witness-email"
                   placeholder="Witness Email"
-                  onChange={(e) => { this.handleInputChange(e.target.value, "witnessEmail") }}
+                  value={this.props.activeContract.witnessEmail}
+                  onChange={(e) => { this.props.handleInputChange(e.target.value, "witnessEmail") }}
                 />
               </div>
             </div>
