@@ -19,29 +19,39 @@ class ContractList extends Component {
       centerMode: true
     };
 
-    return(
-      <div className="contract-list">
+    if(this.props.contracts.length) {
+      return(
+        <div className="contract-list">
 
-        <Slider {...settings}>
+          <Slider {...settings}>
 
-          {this.props.contracts.map((contract) => {
-            return(
-              <div key={contract.id}>
-                <ContractListItem
-                  id={contract.id}
-                  title={contract.title}
-                  endDate={contract.endDate}
-                  witness={contract.witness.name}
-                  handleClick={this.handleClick}
-                />
-              </div>
-            )
-          })}
+            {this.props.contracts.map((contract) => {
+              return(
+                <div key={contract.id}>
+                  <ContractListItem
+                    id={contract.id}
+                    title={contract.title}
+                    endDate={contract.endDate}
+                    signature={contract.signature}
+                    handleClick={this.handleClick}
+                  />
+                </div>
+              )
+            })}
 
-        </Slider>
+          </Slider>
 
-      </div>
-    )
+        </div>
+      )
+    }
+    else {
+      return(
+        <div>
+
+        </div>
+      )
+    }
+
   }
 }
 
