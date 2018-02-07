@@ -22,15 +22,13 @@ class ContractContainer extends Component {
   handleClick = (e) => {
     this.props.handleClick({
       title: this.state.title,
+      name: this.state.name,
+      signature: this.state.signature,
       contractString: this.state.contractString,
-      endDate: this.state.endDate,
-      witness: {
-        name: this.state.witnessName,
-        email: this.state.witnessEmail
-      }
+      endDate: moment(this.state.endDate).format('YYYY-MM-DD'),
+      witnessName: this.state.witnessName,
+      witnessEmail: this.state.witnessEmail
     })
-    //hit the server
-    //update the state
   }
 
   handleDateChange = (date) => {
@@ -136,7 +134,7 @@ class ContractContainer extends Component {
             <div className="row py-3">
               <div className="col-md-6 col-12">
                 <input
-                  className="text-center mx-2 underline"
+                  className="text-center mx-2 underline sign"
                   type="name"
                   placeholder="Your Name"
                   value={this.state.name}
@@ -145,7 +143,7 @@ class ContractContainer extends Component {
               </div>
               <div className="col-md-6 col-12">
                 <input
-                  className="text-center mx-2 underline signature"
+                  className="text-center mx-2 underline signature sign"
                   type="signature"
                   placeholder="Signature"
                   onChange={(e) => { this.handleInputChange(e.target.value, "signature") }}
@@ -156,7 +154,7 @@ class ContractContainer extends Component {
             <div className="row py-3">
               <div className="col-md-6 col-12">
                 <input
-                  className="text-center mx-2 underline"
+                  className="text-center mx-2 underline sign"
                   type="witness-name"
                   placeholder="Witness Name"
                   onChange={(e) => { this.handleInputChange(e.target.value, "witnessName") }}
@@ -164,7 +162,7 @@ class ContractContainer extends Component {
               </div>
               <div className="col-md-6 col-12">
                 <input
-                  className="text-center mx-2 underline"
+                  className="text-center mx-2 underline sign"
                   type="witness-email"
                   placeholder="Witness Email"
                   onChange={(e) => { this.handleInputChange(e.target.value, "witnessEmail") }}

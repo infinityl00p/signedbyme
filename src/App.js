@@ -1,70 +1,32 @@
 import React, { Component } from 'react';
 import ContractContainer from './ContractContainer';
 import ContractList from './ContractList';
-
-const data = {
-  contracts: [
-    {
-      id: 1,
-      title: "No alcohol",
-      contractString: "Stringidy Stringidy Stringidy",
-      endDate: "05-19-2018",
-      witness: {
-        id: 1,
-        name: "Avneet Brar",
-        email: "avneetbrar@jizzmail.com"
-      }
-    },
-    {
-      id: 2,
-      title: "No Fap",
-      contractString: "Fap Fap Fap",
-      endDate: "05-19-2018",
-      witness: {
-        id: 1,
-        name: "Avneet Brar",
-        email: "avneetbrar@jizzmail.com"
-      }
-    },
-    {
-      id: 3,
-      title: "No alcohol",
-      contractString: "Stringidy Stringidy Stringidy",
-      endDate: "05-19-2018",
-      witness: {
-        id: 1,
-        name: "Avneet Brar",
-        email: "avneetbrar@jizzmail.com"
-      }
-    },
-    {
-      id: 4,
-      title: "No alcohol",
-      contractString: "Stringidy Stringidy Stringidy",
-      endDate: "05-19-2018",
-      witness: {
-        id: 1,
-        name: "Avneet Brar",
-        email: "avneetbrar@jizzmail.com"
-      }
-    }
-  ]
-}
+import api from './utils/api';
 
 class App extends Component {
   constructor() {
     super();
-
     this.state = {
-      contracts: data.contracts
+      contracts: []
     }
   }
 
-  appendContract = (contractObject) => {
-    //TODO: server request, send off emails in server
-    //TODO: receive response with id and witness id
-    var joined = this.state.contracts.concat(contractObject);
-    this.setState({ contracts: joined })
+  componentWillMount() {
+    api.GetContracts()
+      .then((response) => {
+        this.setState({
+          contracts: response
+        })
+      })
+  }
+
+  appendContract = (newContract) => {
+    api.PostContract(newContract)
+      .then((cid) => {
+        newContract.id = cid;
+        var contracts = this.state.contracts.concat(newContract);
+        this.setState({ contracts })
+      })
   }
 
   render() {
@@ -77,7 +39,7 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-12 col-lg-6">
             <ContractContainer handleClick={this.appendContract} />
           </div>
@@ -85,7 +47,9 @@ class App extends Component {
             <ContractList contracts={this.state.contracts} />
           </div>
         </div>
-
+      <p className="text-white col-md-12 pt-5 text-center">
+        James Gill 2018
+      </p>
       </div>
     );
   }
