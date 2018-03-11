@@ -4,20 +4,22 @@ import ContractContainer from './ContractContainer';
 import ContractList from './ContractList';
 import api from './utils/api';
 
+const INITIAL_CONTRACT_STATE = {
+  endDate: moment(),
+  title: '',
+  name: '',
+  contractString: '',
+  signature: '',
+  witnessName: '',
+  witnessEmail: ''
+}
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       contracts: [],
-      activeContract: {
-        endDate: moment(),
-        title: "",
-        name: "",
-        contractString: "",
-        signature: "",
-        witnessName: "",
-        witnessEmail: ""
-      }
+      activeContract: INITIAL_CONTRACT_STATE
     }
   }
 
@@ -51,17 +53,10 @@ class App extends Component {
   appendContract = (newContract) => {
     api.PostContract(newContract)
       .then((cid) => {
-        newContract.id = cid;
+        newContract.cid = cid;
         var contracts = this.state.contracts.concat(newContract);
-        this.setState({ contracts, activeContract: {
-          endDate: moment(),
-          title: "",
-          name: "",
-          contractString: "",
-          signature: "",
-          witnessName: "",
-          witnessEmail: ""
-        }})
+
+        this.setState({ contracts, activeContract: INITIAL_CONTRACT_STATE })
       })
   }
 
