@@ -1,5 +1,5 @@
 var axios = require('axios');
-const ROOT_URL = 'http://localhost:4000/';
+const ROOT_URL = 'https://signedbyme-server.herokuapp.com/';
 const UID = 1;
 
 const api = {
