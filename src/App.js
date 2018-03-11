@@ -8,7 +8,7 @@ const INITIAL_CONTRACT_STATE = {
   endDate: moment(),
   title: '',
   name: '',
-  contractString: '',
+  description: '',
   signature: '',
   witnessName: '',
   witnessEmail: ''
@@ -17,6 +17,7 @@ const INITIAL_CONTRACT_STATE = {
 class App extends Component {
   constructor() {
     super();
+
     this.state = {
       contracts: [],
       activeContract: INITIAL_CONTRACT_STATE
@@ -41,7 +42,7 @@ class App extends Component {
       endDate: moment(contract[0].endDate),
       title: contract[0].title,
       name: contract[0].name,
-      contractString: contract[0].contractString,
+      description: contract[0].description,
       signature: contract[0].signature,
       witnessEmail: contract[0].witnessEmail,
       witnessName: contract[0].witnessName
@@ -60,42 +61,12 @@ class App extends Component {
       })
   }
 
+
   handleInputChange = (value, inputType) => {
     const activeContract = this.state.activeContract;
-    switch(inputType) {
-      case "title":
-        activeContract.title = value;
-        this.setState({ activeContract });
-        break;
+    activeContract[inputType] = value;
 
-      case "name":
-        activeContract.name = value;
-        this.setState({ activeContract });
-        break;
-
-      case "contractString":
-        activeContract.contractString = value;
-        this.setState({ activeContract });
-        break;
-
-      case "signature":
-        activeContract.signature = value;
-        this.setState({ activeContract });
-        break;
-
-      case "witnessName":
-        activeContract.witnessName = value;
-        this.setState({ activeContract });
-        break;
-
-      case "witnessEmail":
-        activeContract.witnessEmail = value;
-        this.setState({ activeContract });
-        break;
-
-      default:
-        break;
-    }
+    this.setState({ activeContract });
   }
 
   handleDateChange = (date) => {

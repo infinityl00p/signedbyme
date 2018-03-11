@@ -9,7 +9,7 @@ class ContractContainer extends Component {
       title: this.props.activeContract.title,
       name: this.props.activeContract.name,
       signature: this.props.activeContract.signature,
-      contractString: this.props.activeContract.contractString,
+      description: this.props.activeContract.description,
       endDate: moment(this.props.activeContract.endDate).format('YYYY-MM-DD'),
       witnessName: this.props.activeContract.witnessName,
       witnessEmail: this.props.activeContract.witnessEmail
@@ -48,8 +48,8 @@ class ContractContainer extends Component {
             <textarea
               className="notes w-100"
               rows="6"
-              value={this.props.activeContract.contractString}
-              onChange={(e) => { this.props.handleInputChange(e.target.value, "contractString") }}
+              value={this.props.activeContract.description}
+              onChange={(e) => { this.props.handleInputChange(e.target.value, "description") }}
             />
           </div>
 
